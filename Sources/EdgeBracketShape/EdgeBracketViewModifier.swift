@@ -34,7 +34,7 @@ struct EdgeBracketViewModifier_Previews: PreviewProvider {
                 .edgeBracket(configuration: .init(
                     edge: .top,
                     shapeStyle: LinearGradient(colors: [.blue, .green], startPoint: .leading, endPoint: .trailing),
-                    strokeStyle: .init(lineWidth: 2)
+                    strokeStyle: .init(lineWidth: 4, lineCap: .round, lineJoin: .round)
                 ))
             
             Text("טסט")
