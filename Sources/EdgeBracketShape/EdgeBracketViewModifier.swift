@@ -29,3 +29,16 @@ extension View {
         modifier(EdgeBracketViewModifier(edge: edge, bracketLength: bracketLength, padding: padding, clamped: clamped))
     }
 }
+
+struct EdgeBracketViewModifier_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Text("Test")
+                .edgeBracket(edge: .leading, bracketLength: 10, padding: 8, clamped: true)
+            
+            Text("טסט")
+                .edgeBracket(edge: .leading, bracketLength: 10, padding: 8, clamped: true)
+                .environment(\.layoutDirection, .rightToLeft)
+        }
+    }
+}
