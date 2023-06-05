@@ -25,7 +25,7 @@ public struct EdgeBracketViewModifier: ViewModifier {
 }
 
 extension View {
-    func edgeBracket(edge: Edge = .leading, bracketLength: CGFloat = 10, padding: CGFloat? = nil, clamped: Bool = false) -> some View {
+    public func edgeBracket(edge: Edge = .leading, bracketLength: CGFloat = 10, padding: CGFloat? = nil, clamped: Bool = false) -> some View {
         modifier(EdgeBracketViewModifier(edge: edge, bracketLength: bracketLength, padding: padding, clamped: clamped))
     }
 }
