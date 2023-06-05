@@ -39,7 +39,7 @@ struct EdgeBracketViewModifier_Previews: PreviewProvider {
                 ))
             
             Text("טסט")
-                .edgeBracket(configuration: .default)
+                .edgeBracket()
                 .environment(\.layoutDirection, .rightToLeft)
         }
     }
