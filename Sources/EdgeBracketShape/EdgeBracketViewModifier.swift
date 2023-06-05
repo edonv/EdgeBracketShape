@@ -7,26 +7,23 @@
 
 import SwiftUI
 
-public struct EdgeBracketViewModifier: ViewModifier {
-    var edge: Edge
-    var bracketLength: CGFloat
-    var padding: CGFloat?
-    var clamped: Bool
+public struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
+    var configuration: EdgeBracketConfiguration<S>
     
     public func body(content: Content) -> some View {
         content
-            .padding(.all, padding)
+            .padding(.all, configuration.padding)
             .overlay(
-                EdgeBracketShape(edge: edge, bracketLength: bracketLength, clamped: clamped)
-                    .stroke(Color.accentColor, lineWidth: 1)
-                .flipsForRightToLeftLayoutDirection(true)
+                EdgeBracketShape(configuration: configuration)
+                    .stroke(configuration.shapeStyle, style: configuration.strokeStyle)
+                    .flipsForRightToLeftLayoutDirection(true)
             )
     }
 }
 
 extension View {
-    public func edgeBracket(edge: Edge = .leading, bracketLength: CGFloat = 10, padding: CGFloat? = nil, clamped: Bool = false) -> some View {
-        modifier(EdgeBracketViewModifier(edge: edge, bracketLength: bracketLength, padding: padding, clamped: clamped))
+    public func edgeBracket<S: ShapeStyle>(configuration: EdgeBracketConfiguration<S>) -> some View {
+        modifier(EdgeBracketViewModifier(configuration: configuration))
     }
 }
 
@@ -34,10 +31,14 @@ struct EdgeBracketViewModifier_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Text("Test")
-                .edgeBracket(edge: .leading, bracketLength: 10, padding: 8, clamped: true)
+                .edgeBracket(configuration: .init(
+                    edge: .top,
+                    shapeStyle: LinearGradient(colors: [.blue, .green], startPoint: .leading, endPoint: .trailing),
+                    strokeStyle: .init(lineWidth: 2)
+                ))
             
             Text("טסט")
-                .edgeBracket(edge: .leading, bracketLength: 10, padding: 8, clamped: true)
+                .edgeBracket(configuration: .default)
                 .environment(\.layoutDirection, .rightToLeft)
         }
     }

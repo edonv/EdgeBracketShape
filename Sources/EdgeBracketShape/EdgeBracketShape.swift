@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-public struct EdgeBracketShape: Shape {
-    var edge: Edge
-    var bracketLength: CGFloat
-    var clamped = false
+public struct EdgeBracketShape<S: ShapeStyle>: Shape {
+    var configuration: EdgeBracketConfiguration<S>
     
     public func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -21,49 +19,49 @@ public struct EdgeBracketShape: Shape {
         var topDashEnd: CGPoint
         var bottomDashEnd: CGPoint
         
-        switch edge {
+        switch configuration.edge {
         case .leading:
             edgeStart = CGPoint(x: rect.minX, y: rect.minY)
             edgeEnd = CGPoint(x: rect.minX, y: rect.maxY)
-            topDashEnd = CGPoint(x: rect.minX + bracketLength, y: rect.minY)
-            bottomDashEnd = CGPoint(x: rect.minX + bracketLength, y: rect.maxY)
+            topDashEnd = CGPoint(x: rect.minX + configuration.bracketLength, y: rect.minY)
+            bottomDashEnd = CGPoint(x: rect.minX + configuration.bracketLength, y: rect.maxY)
             
-            if clamped {
-                topDashEnd.x = min(rect.minX + bracketLength, rect.maxX)
-                bottomDashEnd.x = min(rect.minX + bracketLength, rect.maxX)
+            if configuration.clamped {
+                topDashEnd.x = min(rect.minX + configuration.bracketLength, rect.maxX)
+                bottomDashEnd.x = min(rect.minX + configuration.bracketLength, rect.maxX)
             }
             
         case .top:
             edgeStart = CGPoint(x: rect.maxX, y: rect.minY)
             edgeEnd = CGPoint(x: rect.minX, y: rect.minY)
-            topDashEnd = CGPoint(x: rect.maxX, y: rect.minY + bracketLength)
-            bottomDashEnd = CGPoint(x: rect.minX, y: rect.minY + bracketLength)
+            topDashEnd = CGPoint(x: rect.maxX, y: rect.minY + configuration.bracketLength)
+            bottomDashEnd = CGPoint(x: rect.minX, y: rect.minY + configuration.bracketLength)
             
-            if clamped {
-                topDashEnd.y = min(rect.minY + bracketLength, rect.maxY)
-                bottomDashEnd.y = min(rect.minY + bracketLength, rect.maxY)
+            if configuration.clamped {
+                topDashEnd.y = min(rect.minY + configuration.bracketLength, rect.maxY)
+                bottomDashEnd.y = min(rect.minY + configuration.bracketLength, rect.maxY)
             }
             
         case .trailing:
             edgeStart = CGPoint(x: rect.maxX, y: rect.maxY)
             edgeEnd = CGPoint(x: rect.maxX, y: rect.minY)
-            topDashEnd = CGPoint(x: rect.maxX - bracketLength, y: rect.maxY)
-            bottomDashEnd = CGPoint(x: rect.maxX - bracketLength, y: rect.minY)
+            topDashEnd = CGPoint(x: rect.maxX - configuration.bracketLength, y: rect.maxY)
+            bottomDashEnd = CGPoint(x: rect.maxX - configuration.bracketLength, y: rect.minY)
             
-            if clamped {
-                topDashEnd.x = max(rect.maxX - bracketLength, rect.minX)
-                bottomDashEnd.x = max(rect.maxX - bracketLength, rect.minX)
+            if configuration.clamped {
+                topDashEnd.x = max(rect.maxX - configuration.bracketLength, rect.minX)
+                bottomDashEnd.x = max(rect.maxX - configuration.bracketLength, rect.minX)
             }
             
         case .bottom:
             edgeStart = CGPoint(x: rect.minX, y: rect.maxY)
             edgeEnd = CGPoint(x: rect.maxX, y: rect.maxY)
-            topDashEnd = CGPoint(x: rect.minX, y: rect.maxY - bracketLength)
-            bottomDashEnd = CGPoint(x: rect.maxX, y: rect.maxY - bracketLength)
+            topDashEnd = CGPoint(x: rect.minX, y: rect.maxY - configuration.bracketLength)
+            bottomDashEnd = CGPoint(x: rect.maxX, y: rect.maxY - configuration.bracketLength)
             
-            if clamped {
-                topDashEnd.y = max(rect.maxY - bracketLength, rect.minY)
-                bottomDashEnd.y = max(rect.maxY - bracketLength, rect.minY)
+            if configuration.clamped {
+                topDashEnd.y = max(rect.maxY - configuration.bracketLength, rect.minY)
+                bottomDashEnd.y = max(rect.maxY - configuration.bracketLength, rect.minY)
             }
         }
         
