@@ -8,7 +8,10 @@
 import SwiftUI
 
 public struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
+    /// The configuration of the ``EdgeBracketShape/EdgeBracketShape`` to be drawn.
     public var configuration: EdgeBracketConfiguration<S>
+    
+    /// The amount of padding between the inner view and the bracket shape.
     public var padding: CGFloat?
     
     public func body(content: Content) -> some View {
@@ -23,6 +26,11 @@ public struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
 }
 
 extension View {
+    /// Draws a ``EdgeBracketShape/EdgeBracketShape`` on a specific edge of the view.
+    /// - Parameters:
+    ///   - configuration: The configuration of the ``EdgeBracketShape/EdgeBracketShape`` to be drawn.
+    ///   - padding: The amount of padding between the inner view and the bracket shape.
+    /// - Returns: A view with an ``EdgeBracketShape/EdgeBracketShape`` wrapped around the specified edge.
     public func edgeBracket<S: ShapeStyle>(configuration: EdgeBracketConfiguration<S> = .default, withPadding padding: CGFloat = 8) -> some View {
         modifier(EdgeBracketViewModifier(configuration: configuration, padding: padding))
     }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A customizable bracket `Shape` to be used as on the edge of another `View`.
 public struct EdgeBracketShape<S: ShapeStyle>: Shape {
     var configuration: EdgeBracketConfiguration<S>
     
