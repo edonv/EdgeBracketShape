@@ -65,17 +65,15 @@ public struct EdgeBracketShape<S: ShapeStyle>: Shape {
             }
         }
         
-        // Edge
-        path.move(to: edgeStart) // topLeft
-        path.addLine(to: edgeEnd) // bottomLeft
-        
         // Dash 1
-        path.move(to: edgeStart)
-        path.addLine(to: topDashEnd) // topRight
+        path.move(to: topDashEnd)
+        path.addLine(to: edgeStart)
+        
+        // Edge
+        path.addLine(to: edgeEnd)
         
         // Dash 2
-        path.move(to: edgeEnd)
-        path.addLine(to: bottomDashEnd) // bottomRight
+        path.addLine(to: bottomDashEnd)
         
         return path
     }
