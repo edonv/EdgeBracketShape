@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
-    var configuration: EdgeBracketConfiguration<S>
+    public var configuration: EdgeBracketConfiguration<S>
     public var padding: CGFloat?
     
     public func body(content: Content) -> some View {
