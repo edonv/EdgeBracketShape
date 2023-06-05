@@ -12,7 +12,6 @@ public struct EdgeBracketConfiguration<S: ShapeStyle> {
         EdgeBracketConfiguration<Color>(
             edge: .leading,
             bracketLength: 10,
-            padding: 8,
             shapeStyle: Color.accentColor,
             strokeStyle: .init(lineWidth: 1),
             clamped: true
@@ -21,7 +20,6 @@ public struct EdgeBracketConfiguration<S: ShapeStyle> {
     
     public var edge: Edge
     public var bracketLength: CGFloat
-    public var padding: CGFloat?
     public var shapeStyle: S
     public var strokeStyle: StrokeStyle
     public var clamped: Bool
@@ -34,7 +32,6 @@ public struct EdgeBracketConfiguration<S: ShapeStyle> {
                 clamped: Bool = true) {
         self.edge = edge
         self.bracketLength = bracketLength
-        self.padding = padding
         self.shapeStyle = shapeStyle
         self.strokeStyle = strokeStyle
         self.clamped = clamped

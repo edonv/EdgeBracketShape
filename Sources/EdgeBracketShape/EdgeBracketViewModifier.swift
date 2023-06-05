@@ -9,10 +9,11 @@ import SwiftUI
 
 public struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
     var configuration: EdgeBracketConfiguration<S>
+    public var padding: CGFloat?
     
     public func body(content: Content) -> some View {
         content
-            .padding(.all, configuration.padding)
+            .padding(.all, padding)
             .overlay(
                 EdgeBracketShape(configuration: configuration)
                     .stroke(configuration.shapeStyle, style: configuration.strokeStyle)
@@ -22,8 +23,8 @@ public struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
 }
 
 extension View {
-    public func edgeBracket<S: ShapeStyle>(configuration: EdgeBracketConfiguration<S>) -> some View {
-        modifier(EdgeBracketViewModifier(configuration: configuration))
+    public func edgeBracket<S: ShapeStyle>(configuration: EdgeBracketConfiguration<S> = .default, withPadding padding: CGFloat = 8) -> some View {
+        modifier(EdgeBracketViewModifier(configuration: configuration, padding: padding))
     }
 }
 
