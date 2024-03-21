@@ -10,10 +10,10 @@ import SwiftUI
 extension EdgeBracketShape {
     fileprivate struct BracketViewModifier: ViewModifier {
         /// The configuration of the ``EdgeBracketShape/EdgeBracketShape`` to be drawn.
-        public var configuration: Configuration
+        public let configuration: Configuration
         
         /// The amount of padding between the inner view and the bracket shape.
-        public var padding: CGFloat?
+        public let padding: CGFloat?
         
         public func body(content: Content) -> some View {
             content
