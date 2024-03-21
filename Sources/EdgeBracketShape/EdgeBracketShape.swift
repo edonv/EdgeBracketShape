@@ -9,7 +9,7 @@ import SwiftUI
 
 /// A customizable bracket `Shape` to be used as on the edge of another `View`.
 public struct EdgeBracketShape<S: ShapeStyle>: Shape {
-    let configuration: EdgeBracketConfiguration<S>
+    let configuration: Configuration
     
     public func path(in rect: CGRect) -> Path {
         var path = Path()

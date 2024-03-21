@@ -7,21 +7,23 @@
 
 import SwiftUI
 
-public struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
-    /// The configuration of the ``EdgeBracketShape/EdgeBracketShape`` to be drawn.
-    public var configuration: EdgeBracketConfiguration<S>
-    
-    /// The amount of padding between the inner view and the bracket shape.
-    public var padding: CGFloat?
-    
-    public func body(content: Content) -> some View {
-        content
-            .padding(.all, padding)
-            .overlay(
-                EdgeBracketShape(configuration: configuration)
-                    .stroke(configuration.shapeStyle, style: configuration.strokeStyle)
-                    .flipsForRightToLeftLayoutDirection(true)
-            )
+extension EdgeBracketShape {
+    fileprivate struct BracketViewModifier: ViewModifier {
+        /// The configuration of the ``EdgeBracketShape/EdgeBracketShape`` to be drawn.
+        public var configuration: Configuration
+        
+        /// The amount of padding between the inner view and the bracket shape.
+        public var padding: CGFloat?
+        
+        public func body(content: Content) -> some View {
+            content
+                .padding(.all, padding)
+                .overlay(
+                    EdgeBracketShape(configuration: configuration)
+                        .stroke(configuration.shapeStyle, style: configuration.strokeStyle)
+                        .flipsForRightToLeftLayoutDirection(true)
+                )
+        }
     }
 }
 
@@ -32,10 +34,10 @@ extension View {
     ///   - padding: The amount of padding between the inner view and the bracket shape.
     /// - Returns: A view with an ``EdgeBracketShape/EdgeBracketShape`` wrapped around the specified edge.
     public func edgeBracket<S: ShapeStyle>(
-        configuration: EdgeBracketConfiguration<S> = .default,
+        configuration: EdgeBracketShape<S>.Configuration = .default,
         withPadding padding: CGFloat = 8
     ) -> some View {
-        modifier(EdgeBracketViewModifier(configuration: configuration, padding: padding))
+        modifier(EdgeBracketShape<S>.BracketViewModifier(configuration: configuration, padding: padding))
     }
 }
 
