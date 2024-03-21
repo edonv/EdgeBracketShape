@@ -13,7 +13,7 @@ public struct EdgeBracketShape: Shape {
     public let edge: Edge
     
     /// The length of the bracket "forks".
-    public let bracketLength: CGFloat
+    public var bracketLength: CGFloat
     
     /// Whether the ``bracketLength`` should be "clamped" (limited) to the dimensions of the frame.
     ///
@@ -28,6 +28,11 @@ public struct EdgeBracketShape: Shape {
         self.edge = edge
         self.bracketLength = bracketLength
         self.clamped = clamped
+    }
+    
+    public var animatableData: CGFloat {
+        get { bracketLength }
+        set { bracketLength = newValue }
     }
     
     public func path(in rect: CGRect) -> Path {

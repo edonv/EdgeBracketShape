@@ -104,20 +104,31 @@ extension View {
     }
 }
 
-struct EdgeBracketViewModifier_Previews: PreviewProvider {
-    static var previews: some View {
+struct EdgeBracketViewModifier_Previews: View {
+    @State private var bracketToggle = false
+    
+    var body: some View {
         VStack {
             Text("Test")
                 .edgeBracket(
                     LinearGradient(colors: [.blue, .green], startPoint: .leading, endPoint: .trailing),
                     style: .init(lineWidth: 4, lineCap: .round, lineJoin: .round),
-                    edge: .bottom
+                    edge: .bottom,
+                    bracketLength: bracketToggle ? 10 : 30
                 )
                 .environment(\.layoutDirection, .rightToLeft)
             
-            Text("טסט")
-                .edgeBracket()
-                .environment(\.layoutDirection, .rightToLeft)
+            Button("טסט") {
+                withAnimation {
+                    bracketToggle.toggle()
+                }
+            }
+            .edgeBracket()
+            .environment(\.layoutDirection, .rightToLeft)
         }
     }
+}
+
+#Preview {
+    EdgeBracketViewModifier_Previews()
 }
