@@ -8,6 +8,9 @@
 import SwiftUI
 
 private struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
+    @Environment(\.layoutDirection)
+    private var layoutDirection
+    
     let shapeStyle: S
     
     let strokeStyle: StrokeStyle
@@ -30,8 +33,12 @@ private struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
                     bracketLength: bracketLength,
                     clamped: clamped
                 )
+                // Using this instead of .flipsForRightToLeftLayoutDirection means it doesn't flip the ShapeStyle (could be a gradient)
+                .scale(
+                    x: layoutDirection == .leftToRight ? 1 : -1,
+                    anchor: .center
+                )
                 .stroke(shapeStyle, style: strokeStyle)
-                .flipsForRightToLeftLayoutDirection(true)
             )
     }
 }
@@ -106,6 +113,7 @@ struct EdgeBracketViewModifier_Previews: PreviewProvider {
                     style: .init(lineWidth: 4, lineCap: .round, lineJoin: .round),
                     edge: .bottom
                 )
+                .environment(\.layoutDirection, .rightToLeft)
             
             Text("טסט")
                 .edgeBracket()
