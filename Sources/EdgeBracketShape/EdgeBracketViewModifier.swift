@@ -31,7 +31,10 @@ extension View {
     ///   - configuration: The configuration of the ``EdgeBracketShape/EdgeBracketShape`` to be drawn.
     ///   - padding: The amount of padding between the inner view and the bracket shape.
     /// - Returns: A view with an ``EdgeBracketShape/EdgeBracketShape`` wrapped around the specified edge.
-    public func edgeBracket<S: ShapeStyle>(configuration: EdgeBracketConfiguration<S> = .default, withPadding padding: CGFloat = 8) -> some View {
+    public func edgeBracket<S: ShapeStyle>(
+        configuration: EdgeBracketConfiguration<S> = .default,
+        withPadding padding: CGFloat = 8
+    ) -> some View {
         modifier(EdgeBracketViewModifier(configuration: configuration, padding: padding))
     }
 }
