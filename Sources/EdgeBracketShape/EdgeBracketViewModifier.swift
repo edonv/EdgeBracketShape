@@ -28,7 +28,7 @@ private struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
         content
             .padding(.all, padding)
             .overlay(
-                EdgeBracketShape(
+                EdgeBracket(
                     edge: edge,
                     bracketLength: bracketLength,
                     clamped: clamped
@@ -44,7 +44,7 @@ private struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
 }
 
 extension View {
-    /// Draws a ``EdgeBracketShape/EdgeBracketShape`` on a specific edge of the view.
+    /// Draws a ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
     ///   - style: The `StrokeStyle` to use for drawing the shape.
@@ -52,7 +52,7 @@ extension View {
     ///   - bracketLength: The length of the bracket "forks".
     ///   - clamped: Whether the `bracketLength` should be "clamped" (limited) to the dimensions of the frame.
     ///   - padding: The amount of padding between the inner view and the bracket shape.
-    /// - Returns: A view with an ``EdgeBracketShape/EdgeBracketShape`` wrapped around the specified edge.
+    /// - Returns: A view with an ``EdgeBracketShape/EdgeBracket`` wrapped around the specified edge.
     @_disfavoredOverload
     public func edgeBracket<S: ShapeStyle>(
         _ content: S = Color.accentColor,
@@ -74,7 +74,7 @@ extension View {
         )
     }
     
-    /// Draws a ``EdgeBracketShape/EdgeBracketShape`` on a specific edge of the view.
+    /// Draws a ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
     ///   - lineWidth: The width of the stroke that outlines this shape.
@@ -82,7 +82,7 @@ extension View {
     ///   - bracketLength: The length of the bracket "forks".
     ///   - clamped: Whether the `bracketLength` should be "clamped" (limited) to the dimensions of the frame.
     ///   - padding: The amount of padding between the inner view and the bracket shape.
-    /// - Returns: A view with an ``EdgeBracketShape/EdgeBracketShape`` wrapped around the specified edge.
+    /// - Returns: A view with an ``EdgeBracketShape/EdgeBracket`` wrapped around the specified edge.
     public func edgeBracket<S: ShapeStyle>(
         _ content: S = Color.accentColor,
         lineWidth: CGFloat = 1,
