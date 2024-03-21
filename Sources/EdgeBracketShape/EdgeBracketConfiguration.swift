@@ -26,12 +26,12 @@ public struct EdgeBracketConfiguration<S: ShapeStyle> {
     /// The length of the bracket "forks".
     public var bracketLength: CGFloat
     
-    /// The [ShapeStyle](https://developer.apple.com/documentation/swiftui/shapestyle) to use for filling in the bracket.
+    /// The [`ShapeStyle`](https://developer.apple.com/documentation/swiftui/shapestyle) to use for filling in the bracket.
     ///
-    /// This can be something like a solid color, a gradient, or even a [Material](https://developer.apple.com/documentation/swiftui/material).
+    /// This can be something like a solid color, a gradient, or even a [`Material`](https://developer.apple.com/documentation/swiftui/material).
     public var shapeStyle: S
     
-    /// The [StrokeStyle](https://developer.apple.com/documentation/swiftui/strokestyle) to use for drawing the stroke of the bracket.
+    /// The [`StrokeStyle`](https://developer.apple.com/documentation/swiftui/strokestyle) to use for drawing the stroke of the bracket.
     public var strokeStyle: StrokeStyle
     
     /// Whether the ``bracketLength`` should be "clamped" (limited) to the dimensions of the frame.
