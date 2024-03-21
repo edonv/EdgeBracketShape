@@ -22,6 +22,11 @@ public struct EdgeBracket: Shape {
     /// If `false`, the bracket "forks" will be allowed to extend past the constraints of the frame.
     public let clamped: Bool
     
+    /// Creates an `EdgeBracket` shape.
+    /// - Parameters:
+    ///   - edge: The edge of the frame that the shape should be drawn on.
+    ///   - bracketLength: The length of the bracket "forks".
+    ///   - clamped: Whether the `bracketLength` should be "clamped" (limited) to the dimensions of the frame.
     public init(
         edge: Edge = .leading,
         bracketLength: CGFloat = 10,
