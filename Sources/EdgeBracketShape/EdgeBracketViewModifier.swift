@@ -36,7 +36,7 @@ extension View {
     }
 }
 
-struct EdgeBracketViewModifier_Previews: PreviewProvider {
+private struct EdgeBracketViewModifier_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Text("Test")
