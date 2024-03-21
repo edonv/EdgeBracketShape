@@ -39,12 +39,14 @@ public struct EdgeBracketConfiguration<S: ShapeStyle> {
     /// If false, the bracket "forks" will be allowed to extend past the constraints of the frame.
     public var clamped: Bool
     
-    public init(edge: Edge = .leading,
-                bracketLength: CGFloat = 10,
-                padding: CGFloat? = 8,
-                shapeStyle: S = Color.accentColor,
-                strokeStyle: StrokeStyle = .init(),
-                clamped: Bool = true) {
+    public init(
+        edge: Edge = .leading,
+        bracketLength: CGFloat = 10,
+        padding: CGFloat? = 8,
+        shapeStyle: S = Color.accentColor,
+        strokeStyle: StrokeStyle = .init(),
+        clamped: Bool = true
+    ) {
         self.edge = edge
         self.bracketLength = bracketLength
         self.shapeStyle = shapeStyle
