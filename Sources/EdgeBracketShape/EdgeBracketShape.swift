@@ -40,7 +40,7 @@ public struct EdgeBracketShape: Shape {
         var bottomDashEnd: CGPoint
         
         switch edge {
-        case .leading:
+        case .leading, .trailing:
             edgeStart = CGPoint(x: rect.minX, y: rect.minY)
             edgeEnd = CGPoint(x: rect.minX, y: rect.maxY)
             topDashEnd = CGPoint(x: rect.minX + bracketLength, y: rect.minY)
@@ -51,7 +51,7 @@ public struct EdgeBracketShape: Shape {
                 bottomDashEnd.x = min(rect.minX + bracketLength, rect.maxX)
             }
             
-        case .top:
+        case .top, .bottom:
             edgeStart = CGPoint(x: rect.maxX, y: rect.minY)
             edgeEnd = CGPoint(x: rect.minX, y: rect.minY)
             topDashEnd = CGPoint(x: rect.maxX, y: rect.minY + bracketLength)
@@ -60,28 +60,6 @@ public struct EdgeBracketShape: Shape {
             if clamped {
                 topDashEnd.y = min(rect.minY + bracketLength, rect.maxY)
                 bottomDashEnd.y = min(rect.minY + bracketLength, rect.maxY)
-            }
-            
-        case .trailing:
-            edgeStart = CGPoint(x: rect.maxX, y: rect.maxY)
-            edgeEnd = CGPoint(x: rect.maxX, y: rect.minY)
-            topDashEnd = CGPoint(x: rect.maxX - bracketLength, y: rect.maxY)
-            bottomDashEnd = CGPoint(x: rect.maxX - bracketLength, y: rect.minY)
-            
-            if clamped {
-                topDashEnd.x = max(rect.maxX - bracketLength, rect.minX)
-                bottomDashEnd.x = max(rect.maxX - bracketLength, rect.minX)
-            }
-            
-        case .bottom:
-            edgeStart = CGPoint(x: rect.minX, y: rect.maxY)
-            edgeEnd = CGPoint(x: rect.maxX, y: rect.maxY)
-            topDashEnd = CGPoint(x: rect.minX, y: rect.maxY - bracketLength)
-            bottomDashEnd = CGPoint(x: rect.maxX, y: rect.maxY - bracketLength)
-            
-            if clamped {
-                topDashEnd.y = max(rect.maxY - bracketLength, rect.minY)
-                bottomDashEnd.y = max(rect.maxY - bracketLength, rect.minY)
             }
         }
         
@@ -95,6 +73,14 @@ public struct EdgeBracketShape: Shape {
         // Dash 2
         path.addLine(to: bottomDashEnd)
         
-        return path
+        // For bottom and trailing shapes, rotate on center point 180°
+        if [.bottom, .trailing].contains(edge) {
+            return path.applying(
+                .init(rotationAngle: .pi)
+                .translatedBy(x: -rect.width, y: -rect.height)
+            )
+        } else {
+            return path
+        }
     }
 }
