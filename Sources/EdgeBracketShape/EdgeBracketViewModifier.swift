@@ -107,6 +107,9 @@ extension View {
 struct EdgeBracketViewModifier_Previews: View {
     @State private var bracketToggle = false
     
+    @State private var d = 0
+    private let colors: [Color] = [.blue, .green, .yellow, .red]
+    
     var body: some View {
         VStack {
             Text("Test")
@@ -120,11 +123,23 @@ struct EdgeBracketViewModifier_Previews: View {
             
             Button("טסט") {
                 withAnimation {
-                    bracketToggle.toggle()
+                    d += 1
                 }
             }
-            .edgeBracket()
+            .edgeBracket(edge: .leading)
             .environment(\.layoutDirection, .rightToLeft)
+            
+            
+            ForEach(0..<Edge.allCases.count, id: \.self) { i in
+                let adj = (i + d) % Edge.allCases.count
+                Text("Testing Out")
+                    .foregroundColor(colors[adj])
+                    .edgeBracket(
+                        colors[adj],
+                        edge: Edge.allCases[adj],
+                        bracketLength: adj == 0 ? 10 : 30
+                    )
+            }
         }
     }
 }
