@@ -46,6 +46,7 @@ extension View {
     ///   - clamped: Whether the `bracketLength` should be "clamped" (limited) to the dimensions of the frame.
     ///   - padding: The amount of padding between the inner view and the bracket shape.
     /// - Returns: A view with an ``EdgeBracketShape/EdgeBracketShape`` wrapped around the specified edge.
+    @_disfavoredOverload
     public func edgeBracket<S: ShapeStyle>(
         _ content: S = Color.accentColor,
         style: StrokeStyle = .init(),
