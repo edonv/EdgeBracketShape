@@ -45,6 +45,8 @@ private struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
 
 extension View {
     /// Draws an ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
+    ///
+    /// When in a right-to-left context, the shape will automatically be mirrored horizontally.
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
     ///   - style: The `StrokeStyle` to use for drawing the shape.
@@ -75,6 +77,8 @@ extension View {
     }
     
     /// Draws an ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
+    /// 
+    /// When in a right-to-left context, the shape will automatically be mirrored horizontally.
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
     ///   - lineWidth: The width of the stroke that outlines this shape.
