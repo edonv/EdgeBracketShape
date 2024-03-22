@@ -46,6 +46,8 @@ private struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
 extension View {
     /// Draws an ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
     ///
+    /// This modifier lets you set the [`StrokeStyle`](https://developer.apple.com/documentation/swiftui/strokestyle) of the shape. If you only need to set stroke width, use ``edgeBracket(_:lineWidth:edge:forkLength:clamped:withPadding:)`` instead.
+    ///
     /// > Note: When in a right-to-left context, the shape will automatically be mirrored horizontally.
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
@@ -78,6 +80,8 @@ extension View {
     
     /// Draws an ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
     /// 
+    /// This modifier only lets you set the stroke width of the shape. If you need to set the full [`StrokeStyle`](https://developer.apple.com/documentation/swiftui/strokestyle), use ``edgeBracket(_:style:edge:forkLength:clamped:withPadding:)`` instead.
+    ///
     /// > Note: When in a right-to-left context, the shape will automatically be mirrored horizontally.
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
