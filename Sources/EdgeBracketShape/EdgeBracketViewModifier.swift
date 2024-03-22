@@ -27,7 +27,7 @@ private struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(.all, padding)
-            .overlay(
+            .overlayBackport {
                 EdgeBracket(
                     edge: edge,
                     forkLength: forkLength,
@@ -39,7 +39,7 @@ private struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
                     anchor: .center
                 )
                 .stroke(shapeStyle, style: strokeStyle)
-            )
+            }
     }
 }
 
