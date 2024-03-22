@@ -44,7 +44,7 @@ private struct EdgeBracketViewModifier<S: ShapeStyle>: ViewModifier {
 }
 
 extension View {
-    /// Draws a ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
+    /// Draws an ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
     ///   - style: The `StrokeStyle` to use for drawing the shape.
@@ -74,7 +74,7 @@ extension View {
         )
     }
     
-    /// Draws a ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
+    /// Draws an ``EdgeBracketShape/EdgeBracket`` on a specific edge of the view.
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
     ///   - lineWidth: The width of the stroke that outlines this shape.
