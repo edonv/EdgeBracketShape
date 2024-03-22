@@ -52,7 +52,7 @@ extension View {
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
     ///   - style: The `StrokeStyle` to use for drawing the shape.
-    ///   - edge: The edge to draw the bracket.
+    ///   - edge: The edge of the parent view along which to draw the bracket.
     ///   - forkLength: The length of the bracket "forks".
     ///   - clamped: Whether the brackets' length (`forkLength`) should be "clamped" (limited) to the dimensions of the frame.
     ///   - padding: The amount of padding between the inner view and the bracket shape.
@@ -86,7 +86,7 @@ extension View {
     /// - Parameters:
     ///   - content: The color or gradient with which to stroke this shape.
     ///   - lineWidth: The width of the stroke that outlines this shape.
-    ///   - edge: The edge to draw the bracket.
+    ///   - edge: The edge of the parent view along which to draw the bracket.
     ///   - forkLength: The length of the bracket "forks".
     ///   - clamped: Whether the brackets' length (`forkLength`) should be "clamped" (limited) to the dimensions of the frame.
     ///   - padding: The amount of padding between the inner view and the bracket shape.
