@@ -39,7 +39,7 @@ public struct EdgeBracket: Shape {
     
     public var animatableData: AnimatablePair<UnitPoint.AnimatableData, CGFloat> {
         get {
-            return .init(origin.edgeCenter.animatableData, forkLength)
+            .init(origin.edgeCenter.animatableData, forkLength)
         } set {
             self.origin.edgeCenter.animatableData = newValue.first
             self.forkLength = newValue.second
