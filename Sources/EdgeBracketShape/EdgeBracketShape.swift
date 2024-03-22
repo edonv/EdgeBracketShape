@@ -17,7 +17,7 @@ public struct EdgeBracket: Shape {
     /// The length of the bracket "forks".
     public var forkLength: CGFloat
     
-    /// Whether the ``forkLength`` should be "clamped" (limited) to the dimensions of the frame.
+    /// Whether the brackets' length (`forkLength`) should be "clamped" (limited) to the dimensions of the frame.
     ///
     /// If `false`, the bracket "forks" will be allowed to extend past the constraints of the frame.
     public let clamped: Bool
@@ -26,7 +26,7 @@ public struct EdgeBracket: Shape {
     /// - Parameters:
     ///   - edge: The edge of the frame that the shape should be drawn on.
     ///   - forkLength: The length of the bracket "forks".
-    ///   - clamped: Whether the `forkLength` should be "clamped" (limited) to the dimensions of the frame.
+    ///   - clamped: Whether the brackets' length (`forkLength`) should be "clamped" (limited) to the dimensions of the frame.
     public init(
         edge: Edge = .leading,
         forkLength: CGFloat = 10,

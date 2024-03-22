@@ -52,7 +52,7 @@ extension View {
     ///   - style: The `StrokeStyle` to use for drawing the shape.
     ///   - edge: The edge to draw the bracket.
     ///   - forkLength: The length of the bracket "forks".
-    ///   - clamped: Whether the `forkLength` should be "clamped" (limited) to the dimensions of the frame.
+    ///   - clamped: Whether the brackets' length (`forkLength`) should be "clamped" (limited) to the dimensions of the frame.
     ///   - padding: The amount of padding between the inner view and the bracket shape.
     /// - Returns: A view with an ``EdgeBracketShape/EdgeBracket`` wrapped around the specified edge.
     @_disfavoredOverload
@@ -84,7 +84,7 @@ extension View {
     ///   - lineWidth: The width of the stroke that outlines this shape.
     ///   - edge: The edge to draw the bracket.
     ///   - forkLength: The length of the bracket "forks".
-    ///   - clamped: Whether the `forkLength` should be "clamped" (limited) to the dimensions of the frame.
+    ///   - clamped: Whether the brackets' length (`forkLength`) should be "clamped" (limited) to the dimensions of the frame.
     ///   - padding: The amount of padding between the inner view and the bracket shape.
     /// - Returns: A view with an ``EdgeBracketShape/EdgeBracket`` wrapped around the specified edge.
     public func edgeBracket<S: ShapeStyle>(
