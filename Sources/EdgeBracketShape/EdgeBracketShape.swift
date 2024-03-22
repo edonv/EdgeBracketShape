@@ -24,7 +24,7 @@ public struct EdgeBracket: Shape {
     
     /// Creates an `EdgeBracket` shape.
     /// - Parameters:
-    ///   - edge: The edge of the frame that the shape should be drawn on.
+    ///   - edge: The edge of the frame along which to draw the shape.
     ///   - forkLength: The length of the bracket "forks".
     ///   - clamped: Whether the brackets' length (`forkLength`) should be "clamped" (limited) to the dimensions of the frame.
     public init(
