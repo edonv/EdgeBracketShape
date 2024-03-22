@@ -137,16 +137,18 @@ struct EdgeBracketViewModifier_Previews: View {
             .edgeBracket(edge: .leading)
             .environment(\.layoutDirection, .rightToLeft)
             
-            
-            ForEach(0..<Edge.allCases.count, id: \.self) { i in
-                let adj = (i + d) % Edge.allCases.count
-                Text("Testing Out")
-                    .foregroundColor(colors[adj])
-                    .edgeBracket(
-                        colors[adj],
-                        edge: Edge.allCases[adj],
-                        forkLength: adj == 0 ? 10 : 30
-                    )
+            HStack {
+                ForEach(0..<Edge.allCases.count, id: \.self) { i in
+                    let adj = (i + d) % Edge.allCases.count
+                    Text("Test")
+                        .foregroundColor(colors[adj])
+                        .edgeBracket(
+                            colors[adj],
+                            style: .init(lineWidth: 3, lineCap: .round, lineJoin: .round),
+                            edge: Edge.allCases[adj],
+                            forkLength: adj == 0 ? 10 : 30
+                        )
+                }
             }
         }
     }
