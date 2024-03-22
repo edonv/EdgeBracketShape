@@ -41,5 +41,5 @@ struct EdgeBracketExample: View {
 
 ### Relevant Modifiers
 
-- ``edgeBracket(_:lineWidth:edge:forkLength:clamped:withPadding:)``
-- ``edgeBracket(_:style:edge:forkLength:clamped:withPadding:)``
+- ``SwiftUI/View/edgeBracket(_:lineWidth:edge:forkLength:clamped:withPadding:)``
+- ``SwiftUI/View/edgeBracket(_:style:edge:forkLength:clamped:withPadding:)``
