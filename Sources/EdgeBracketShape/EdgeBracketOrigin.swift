@@ -27,7 +27,7 @@ extension EdgeBracket {
         
         internal func pathPoints(
             for rect: CGRect,
-            withBracketLength bracketLength: CGFloat
+            withForkLength forkLength: CGFloat
         ) -> [CGPoint] {
             // everything is relative to .top, until transformed
             
@@ -51,12 +51,12 @@ extension EdgeBracket {
             // create bracket points at 90° angles
             let bracketEnd1 = convertedPoints[0]
                 .newPoint(
-                    withLength: bracketLength,
+                    withLength: forkLength,
                     atAngle: rotateAngle + .degrees(90)
                 )
             let bracketEnd2 = convertedPoints[1]
                 .newPoint(
-                    withLength: bracketLength,
+                    withLength: forkLength,
                     atAngle: rotateAngle + .degrees(90)
                 )
             

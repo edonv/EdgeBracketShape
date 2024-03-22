@@ -15,9 +15,9 @@ public struct EdgeBracket: Shape {
     public var origin: Origin
     
     /// The length of the bracket "forks".
-    public var bracketLength: CGFloat
+    public var forkLength: CGFloat
     
-    /// Whether the ``bracketLength`` should be "clamped" (limited) to the dimensions of the frame.
+    /// Whether the ``forkLength`` should be "clamped" (limited) to the dimensions of the frame.
     ///
     /// If `false`, the bracket "forks" will be allowed to extend past the constraints of the frame.
     public let clamped: Bool
@@ -25,37 +25,37 @@ public struct EdgeBracket: Shape {
     /// Creates an `EdgeBracket` shape.
     /// - Parameters:
     ///   - edge: The edge of the frame that the shape should be drawn on.
-    ///   - bracketLength: The length of the bracket "forks".
-    ///   - clamped: Whether the `bracketLength` should be "clamped" (limited) to the dimensions of the frame.
+    ///   - forkLength: The length of the bracket "forks".
+    ///   - clamped: Whether the `forkLength` should be "clamped" (limited) to the dimensions of the frame.
     public init(
         edge: Edge = .leading,
-        bracketLength: CGFloat = 10,
+        forkLength: CGFloat = 10,
         clamped: Bool = true
     ) {
         self.origin = .init(edge: edge)
-        self.bracketLength = bracketLength
+        self.forkLength = forkLength
         self.clamped = clamped
     }
     
     public var animatableData: AnimatablePair<UnitPoint.AnimatableData, CGFloat> {
         get {
-            return .init(origin.edgeCenter.animatableData, bracketLength)
+            return .init(origin.edgeCenter.animatableData, forkLength)
         } set {
             self.origin.edgeCenter.animatableData = newValue.first
-            self.bracketLength = newValue.second
+            self.forkLength = newValue.second
         }
     }
     
     public func path(in rect: CGRect) -> Path {
         var path = Path()
-        let points = origin.pathPoints(for: rect, withBracketLength: bracketLength)
+        let points = origin.pathPoints(for: rect, withForkLength: forkLength)
         path.addLines(points)
         return path
     }
     
     /// Its behaviour is to *not* flip automatically in right-to-left contexts so it acts consistently.
     ///
-    /// When using ``SwiftUI/View/edgeBracket(_:lineWidth:edge:bracketLength:clamped:withPadding:)`` or ``SwiftUI/View/edgeBracket(_:style:edge:bracketLength:clamped:withPadding:)`` it will automatically mirror. When using ``EdgeBracketShape`` directly, you can use [`flipsForRightToLeftLayoutDirection(_:)`](https://developer.apple.com/documentation/familycontrols/familyactivitypicker/flipsforrighttoleftlayoutdirection(_:)) to control this manually.
+    /// When using ``SwiftUI/View/edgeBracket(_:lineWidth:edge:forkLength:clamped:withPadding:)`` or ``SwiftUI/View/edgeBracket(_:style:edge:forkLength:clamped:withPadding:)`` it will automatically mirror. When using ``EdgeBracketShape`` directly, you can use [`flipsForRightToLeftLayoutDirection(_:)`](https://developer.apple.com/documentation/familycontrols/familyactivitypicker/flipsforrighttoleftlayoutdirection(_:)) to control this manually.
     @available(iOS 17, macCatalyst 17, macOS 14, tvOS 17, watchOS 10, *)
     public var layoutDirectionBehavior: LayoutDirectionBehavior { .fixed }
 }
