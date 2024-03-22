@@ -85,3 +85,10 @@ extension EdgeBracket {
         }
     }
 }
+
+extension EdgeBracket.Origin: Animatable {
+    public var animatableData: UnitPoint.AnimatableData {
+        get { edgeCenter.animatableData }
+        set { edgeCenter.animatableData = newValue }
+    }
+}

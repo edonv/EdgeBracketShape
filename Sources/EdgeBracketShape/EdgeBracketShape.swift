@@ -37,11 +37,11 @@ public struct EdgeBracket: Shape {
         self.clamped = clamped
     }
     
-    public var animatableData: AnimatablePair<UnitPoint.AnimatableData, CGFloat> {
+    public var animatableData: AnimatablePair<Origin.AnimatableData, CGFloat> {
         get {
-            .init(origin.edgeCenter.animatableData, forkLength)
+            .init(origin.animatableData, forkLength)
         } set {
-            self.origin.edgeCenter.animatableData = newValue.first
+            self.origin.animatableData = newValue.first
             self.forkLength = newValue.second
         }
     }
