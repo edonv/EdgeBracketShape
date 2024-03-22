@@ -53,7 +53,7 @@ public struct EdgeBracket: Shape {
         return path
     }
     
-    /// Its behaviour is to not flip automatically in right-to-left contexts so it acts consistently.
+    /// Its behaviour is to *not* flip automatically in right-to-left contexts so it acts consistently.
     ///
     /// When using ``SwiftUI/View/edgeBracket(_:lineWidth:edge:bracketLength:clamped:withPadding:)`` or ``SwiftUI/View/edgeBracket(_:style:edge:bracketLength:clamped:withPadding:)`` it will automatically mirror. When using ``EdgeBracketShape`` directly, you can use [`flipsForRightToLeftLayoutDirection(_:)`](https://developer.apple.com/documentation/familycontrols/familyactivitypicker/flipsforrighttoleftlayoutdirection(_:)) to control this manually.
     @available(iOS 17, macCatalyst 17, macOS 14, tvOS 17, watchOS 10, *)
